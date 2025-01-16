@@ -20,7 +20,7 @@ function university_post_type()
         'menu_icon' => 'dashicons-calendar',
     ]);
 
-    // program post type
+    // program post
     register_post_type('program', [
         'has_archive' => true,
         'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
@@ -36,6 +36,24 @@ function university_post_type()
             'singular_name' => 'Program',
         ],
         'menu_icon' => 'dashicons-awards',
+    ]);
+
+    // professors
+    register_post_type('professor', [
+        'has_archive' => true,
+        'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
+        'rewrite' => ['slug' => 'professors'],
+        'public' => true,
+        'show_in_rest' => true,
+        'labels' => [
+            'name' => 'Professors',
+            'add_new_item' => 'Add New Professor',
+            'new_item' => 'New Professor',
+            'edit_item' => 'Edit Professor',
+            'all_items' => 'All Professors',
+            'singular_name' => 'Professor',
+        ],
+        'menu_icon' => 'dashicons-groups',
     ]);
 }
 add_action('init', 'university_post_type');

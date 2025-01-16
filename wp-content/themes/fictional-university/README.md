@@ -97,6 +97,7 @@ paged (int) – number of page. Show the posts that would normally show up just 
         'meta_key' => 'event_date',
         'order' => 'ASC',
         'meta_query' => [
+
             'key' => 'event_date',
             'compare' => '<',
             'value' => $date_today,
@@ -143,4 +144,17 @@ posts or custom post types. In this specific code snippet, `echo paginate_links(
 echo paginate_links([
         'total' => $pastEvents->max_num_pages
     ]);
+```
+
+### wp_reset_postdata()
+
+A WordPress function that resets the global variable after a
+custom WP_Query loop. This function restores the global data to the current post in
+the main query, ensuring that template tags and functions related to the main query work
+correctly after a custom query loop. It is important to use `wp_reset_postdata` after a
+custom WP_Query loop to avoid conflicts and ensure proper functionality of subsequent
+template tags and functions.
+
+```php
+wp_reset_postdata();
 ```

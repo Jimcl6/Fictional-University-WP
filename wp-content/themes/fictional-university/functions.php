@@ -15,7 +15,10 @@ add_action('wp_enqueue_scripts', 'university_files');
 
 function university_features()
 {
+    // this feature allows us to get WordPress to use their title tag for our header.php, rather than hard-coding it.
     add_theme_support('title-tag');
+
+
     // theme_support thumbnail must always be added to be able to use post thumbnails/featured image.
     add_theme_support('post-thumbnails');
 }
