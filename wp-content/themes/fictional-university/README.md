@@ -158,3 +158,8 @@ template tags and functions.
 ```php
 wp_reset_postdata();
 ```
+
+### the_post_thumbnail_url()
+
+This wordpress function displays the post URL.
+syntax:- `the_post_thumbnail()`.
