@@ -161,6 +161,7 @@ wp_reset_postdata();
 
 ### the_post_thumbnail_url()
 
+`add_image_size(name:, width:, height:, crop:boolean|array);`
 This wordpress function displays the post URL.
 syntax:- `the_post_thumbnail()`.
 
@@ -168,5 +169,6 @@ syntax:- `the_post_thumbnail()`.
 
 This registers an image size.
 **_This image will only apply to future uploaded images, hence if you want this to be preset, register this function before uploading any image._**
-
+<br>
+syntax:-
 `add_image_size(name:, width:, height:, crop:boolean|array);`
