@@ -50,6 +50,8 @@ while (have_posts()) {
         ]);
 
         if ($related_professors->have_posts()) {
+
+            echo '<ul class="professor-cards">';
             while ($related_professors->have_posts()) {
                 $related_professors->the_post();
 
@@ -61,10 +63,8 @@ while (have_posts()) {
                         <span class="professor-card__name"><?php the_title() ?></span>
                     </a>
                 </li>
-                <?php
-
-            }
-
+            <?php }
+            echo '</ul>';
         }
 
         wp_reset_postdata();

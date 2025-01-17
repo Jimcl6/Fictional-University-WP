@@ -21,6 +21,10 @@ function university_features()
 
     // theme_support thumbnail must always be added to be able to use post thumbnails/featured image.
     add_theme_support('post-thumbnails');
+
+    // this functions will not initiate instantly, it would rather apply the sizes in future uploaded images.
+    add_image_size('professor-landscape', 400, 260, true);
+    add_image_size('professor-portrait', 480, 650, true);
 }
 add_action('after_setup_theme', 'university_features');
 
