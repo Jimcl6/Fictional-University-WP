@@ -25,6 +25,7 @@ function university_features()
     // this functions will not initiate instantly, it would rather apply the sizes in future uploaded images.
     add_image_size('professor-landscape', 400, 260, true);
     add_image_size('professor-portrait', 480, 650, true);
+    add_image_size('page-banner', 1500, 350, true);
 }
 add_action('after_setup_theme', 'university_features');
 
