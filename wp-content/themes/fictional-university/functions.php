@@ -1,18 +1,33 @@
 <?php
 
-function pageBanner()
+function pageBanner($args = null)
 {
+    if (!isset($args["title"])) {
+        $args['title'] = get_the_title();
+    }
 
+    if (!isset($args['subtitle'])) {
+        $args['subtitle'] = get_field('page_banner_subtitle');
+    }
+
+    if (!isset($args['photo'])) {
+        /* This block of code is checking if a custom field named 'page_banner_background_image' exists
+        and if the current page is not an archive or the homepage. */
+        if (get_field('page_banner_background_img') and !is_archive() and !is_home()) {
+            $args['photo'] = get_field('page_banner_background_img')['sizes']['page-banner'];
+        } else {
+            $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
+        }
+    }
     ?>
     <div class="page-banner">
-        <div class="page-banner__bg-image" style="background-image: url(<?php $page_banner_image = get_field('page_banner_background_img');
-        echo $page_banner_image['sizes']['page-banner']; ?>)">
+        <div class="page-banner__bg-image" style="background-image: url(<?= $args['photo']; ?>)">
         </div>
         <div class="page-banner__content container container--narrow">
 
-            <h1 class="page-banner__title"><?php echo get_the_title(); ?></h1>
+            <h1 class="page-banner__title"><?= $args['title']; ?></h1>
             <div class="page-banner__intro">
-                <p><?= get_field('page_banner_subtitle'); ?></p>
+                <p><?= $args['subtitle'] ?></p>
             </div>
         </div>
     </div>

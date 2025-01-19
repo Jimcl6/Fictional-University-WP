@@ -193,3 +193,18 @@ print_r($page_banner_image)
 // this provides an output.
 // array( [ID] => 62 [id] => 62 [title] => field [filename] => field-scaled.jpg [filesize] => 819686 [url] => http://fictional-university.local/wp-content/uploads/2025/01/field-scaled.jpg [link] => http://fictional-university.local/professors/dr-meowsalot/field/ [alt] => [author] => 1 [description] => [caption] => [name] => field [status] => inherit [uploaded_to] => 57 [date] => 2025-01-17 08:32:17 [modified] => 2025-01-17 08:32:17 [menu_order] => 0 [mime_type] => image/jpeg [type] => image [subtype] => jpeg [icon] => http://fictional-university.local/wp-includes/images/media/default.png [width] => 2560 [height] => 1707 [sizes] => Array ( [thumbnail] => http://fictional-university.local/wp-content/uploads/2025/01/field-150x150.jpg [thumbnail-width] => 150 [thumbnail-height] => 150 [medium] => http://fictional-university.local/wp-content/uploads/2025/01/field-300x200.jpg [medium-width] => 300 [medium-height] => 200 [medium_large] => http://fictional-university.local/wp-content/uploads/2025/01/field-768x512.jpg [medium_large-width] => 768 [medium_large-height] => 512 [large] => http://fictional-university.local/wp-content/uploads/2025/01/field-1024x683.jpg [large-width] => 1024 [large-height] => 683 [1536x1536] => http://fictional-university.local/wp-content/uploads/2025/01/field-1536x1024.jpg [1536x1536-width] => 1536 [1536x1536-height] => 1024 [2048x2048] => http://fictional-university.local/wp-content/uploads/2025/01/field-2048x1365.jpg [2048x2048-width] => 2048 [2048x2048-height] => 1365 [professor-landscape] => http://fictional-university.local/wp-content/uploads/2025/01/field-400x260.jpg [professor-landscape-width] => 400 [professor-landscape-height] => 260 [professor-portrait] => http://fictional-university.local/wp-content/uploads/2025/01/field-480x650.jpg [professor-portrait-width] => 480 [professor-portrait-height] => 650 [page-banner] => http://fictional-university.local/wp-content/uploads/2025/01/field-1500x350.jpg [page-banner-width] => 1500 [page-banner-height] => 350 ) )
 ```
+
+### Code block that checks for page_banner_bg_img custom field.
+
+This block of code is checking if a custom field named 'page_banner_background_image' exists
+and if the current page is not an archive or the homepage.
+
+```php
+
+if (get_field('page_banner_background_img') and !is_archive() and !is_home()) {
+    $args['photo'] = get_field('page_banner_background_img')['sizes']['page-banner'];
+} else {
+    $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
+}
+
+```
