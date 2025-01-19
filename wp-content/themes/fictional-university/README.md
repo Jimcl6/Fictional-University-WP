@@ -208,3 +208,31 @@ if (get_field('page_banner_background_img') and !is_archive() and !is_home()) {
 }
 
 ```
+
+### Template Part WordPress
+
+Loads a template part into a template.<br>
+Provides a simple mechanism for child themes to overload reusable sections of code in the theme.<br>
+Includes the named template part for a theme or if a name is specified then a specialized part will be included. If the theme contains
+no {slug}.php file then no template will be included.<br>
+The template is included using require, not require_once, so you may include the same template part multiple times.<br>
+For the $name parameter, if the file is called "{slug}-special.php" then specify "special".<br>
+
+@param $slug: The slug name for the generic template.
+
+@param $name: Optional. The name of the specialized template.
+
+@param $args: Optional. Additional arguments passed to the template. Default empty array.
+
+@return Void on success, false if the template does not exist.
+
+```php
+get_template_part('template-parts/event', 'excerpt')
+
+// the first argument is normally slug file name. e.g. 'template-parts/event' similar to url, this serves as an instruction where the function would pull the template from.
+//the second argument is usually the specialty name.
+
+get_template_part('tempalte-parts/content', get_post_type());
+
+// now in this version of the function here we changed the second argumen to a WordPress function. now The file name that this will get_template_part function is now dynamic, meaning it will now be searching for the post type instead of the predefined name that our template-part file has. With this syntax this now allows us to set things up for a search results screen.
+```

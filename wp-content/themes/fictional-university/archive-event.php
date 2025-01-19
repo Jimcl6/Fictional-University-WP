@@ -8,8 +8,24 @@ pageBanner([
 
 <div class="container container--narrow page-section">
     <?php
-    while (have_posts()) {
-        the_post();
+    $events_archive = new WP_Query([
+        'post_type' => 'event',
+        'orderby' => 'meta_value_num',
+        'meta_key' => 'event_date',
+        'order' => 'ASC',
+        // this block allows us to not display past events.
+        'meta_query' => [
+            [
+                'key' => 'event_date',
+                'compare' => '>=',
+                'value' => date('Ymd'),
+                'type' => 'numeric',
+            ]
+        ]
+        // ----------------end of block----------------
+    ]);
+    while ($events_archive->have_posts()) {
+        $events_archive->the_post();
 
         // DateTime class:- By default, this will always return the current date and time.
         $eventDate = new DateTime(get_field('event_date'));
