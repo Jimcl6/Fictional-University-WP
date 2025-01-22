@@ -43,7 +43,7 @@
       while ($homepage_events->have_posts()) {
         $homepage_events->the_post();
 
-        get_template_part('template-parts/event', get_post_format());
+        get_template_part('template-parts/content', 'event');
       }
       // this function prompts WordPres to reset its WP_Query.
       wp_reset_postdata();
